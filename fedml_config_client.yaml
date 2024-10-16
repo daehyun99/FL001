@@ -1,0 +1,33 @@
+common_args:
+  training_type: "simulation"
+  using_mlops: false
+  random_seed: 0
+  config_version: "release"
+
+data_args:
+  dataset: "mnist"
+  data_cache_dir: "./data/mnist"
+  partition_method: "hetero"
+  partition_alpha: 0.5
+
+model_args:
+  model: "lr"
+
+train_args:
+  federated_optimizer: "FedAvg"
+  client_num_in_total: 2
+  client_num_per_round: 2
+  comm_round: 10
+  epochs: 1
+  batch_size: 10
+  client_optimizer: sgd
+  learning_rate: 0.03
+  weight_decay: 0.001
+
+device_args:
+  using_gpu: false
+
+comm_args:
+  backend: "MQTT"
+  server_ip: "192.168.219.103"
+  server_port: 2202
